@@ -13,6 +13,8 @@ import mx.com.gm.peliculas.domain.Pelicula;
  * @author Windows 10
  */
 public class AccesoDatosImpl implements AccesoDatos {
+    
+   
 
     @Override
     public boolean existe(String nombreArchivo) {

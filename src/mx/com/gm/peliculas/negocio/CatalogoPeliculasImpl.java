@@ -5,11 +5,16 @@
  */
 package mx.com.gm.peliculas.negocio;
 
+import mx.com.gm.peliculas.datos.AccesoDatosImpl;
+
 /**
  *
  * @author Windows 10
  */
 public class CatalogoPeliculasImpl implements CatalogoPeliculas{
+    
+    public AccesoDatosImpl datos = new AccesoDatosImpl();
+    
 
     @Override
     public void agregarPelicula(String nombreArchivo, String nombrePelicula) {
