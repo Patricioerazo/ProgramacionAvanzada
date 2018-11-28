@@ -5,6 +5,9 @@
  */
 package mx.com.gm.peliculas.datos;
 
+import java.util.List;
+import mx.com.gm.peliculas.domain.Pelicula;
+
 /**
  *
  * @author Windows 10

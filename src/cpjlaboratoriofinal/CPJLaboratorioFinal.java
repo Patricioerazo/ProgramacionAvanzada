@@ -9,7 +9,7 @@ package cpjlaboratoriofinal;
  *
  * @author Windows 10
  */
-public class LaboratorioFinal {
+public class CPJLaboratorioFinal {
 
     /**
      * @param args the command line arguments
