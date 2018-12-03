@@ -5,7 +5,17 @@
  */
 package mx.com.gm.peliculas.negocio;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import mx.com.gm.peliculas.datos.AccesoDatosImpl;
+import mx.com.gm.peliculas.domain.Pelicula;
+import mx.com.gm.peliculas.excepciones.AccesoDatosEx;
+import mx.com.gm.peliculas.excepciones.LecturaDatosEx;
 
 /**
  *
@@ -13,27 +23,64 @@ import mx.com.gm.peliculas.datos.AccesoDatosImpl;
  */
 public class CatalogoPeliculasImpl implements CatalogoPeliculas{
     
-    public AccesoDatosImpl datos = new AccesoDatosImpl();
+    private AccesoDatosImpl datos;
     
 
     @Override
     public void agregarPelicula(String nombreArchivo, String nombrePelicula) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       
+        
+        Pelicula pelicula = new Pelicula(nombrePelicula);
+        boolean anexar = false;
+ 
+        try {
+            anexar = datos.existe(nombreArchivo);
+            datos.escribir(pelicula, nombreArchivo, anexar);
+        } catch (AccesoDatosEx ex) {
+            System.out.println("Error de Acceso al Archivo");
+            ex.printStackTrace();
+        }
     }
 
     @Override
     public void listarPeliculas(String nombreArchivo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        try {
+            List<Pelicula> peliculas = datos.listar(nombreArchivo);
+            for (Pelicula pelicula : peliculas) {
+                System.out.println("Pelicula " + pelicula);
+            }
+            
+        } catch (LecturaDatosEx ex) {
+            Logger.getLogger(CatalogoPeliculasImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
     }
 
     @Override
     public void buscarPelicula(String nombreArchivo, String buscar) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       
+        String resultado = null;
+        resultado = datos.buscar(nombreArchivo, buscar);
+        System.out.println("Resultado de Busqueda:" + resultado);   
     }
 
     @Override
     public void iniciarArchivo(String nombreArchivo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+     
+        try {
+            if (datos.existe(nombreArchivo)){
+                datos.borrar(nombreArchivo);
+                datos.crear(nombreArchivo);
+            }else {
+                datos.crear(nombreArchivo);
+                
+                
+            }   } catch (AccesoDatosEx ex) {
+            System.out.println("Error al acceder a datos");
+            ex.printStackTrace();
+        }
     }
 
    

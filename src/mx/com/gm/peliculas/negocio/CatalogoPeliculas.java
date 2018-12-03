@@ -10,8 +10,8 @@ package mx.com.gm.peliculas.negocio;
  * @author Windows 10
  */
 public interface CatalogoPeliculas {
-    public abstract void agregarPelicula(String nombreArchivo, String nombrePelicula);
-    public abstract void listarPeliculas (String nombreArchivo);
-    public abstract void buscarPelicula (String nombreArchivo, String buscar);
-    public abstract void iniciarArchivo (String nombreArchivo);
+    public void agregarPelicula(String nombreArchivo, String nombrePelicula);
+    public void listarPeliculas (String nombreArchivo);
+    public void buscarPelicula (String nombreArchivo, String buscar);
+    public void iniciarArchivo (String nombreArchivo);
 }

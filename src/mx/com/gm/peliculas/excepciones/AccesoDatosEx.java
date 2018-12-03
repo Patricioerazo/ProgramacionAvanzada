@@ -9,6 +9,12 @@ package mx.com.gm.peliculas.excepciones;
  *
  * @author Windows 10
  */
-public class AccesoDatosEx {
+public class AccesoDatosEx extends Exception{
+    
+    String mensaje;
+    
+    public AccesoDatosEx(String mensaje){
+    this.mensaje = mensaje;
+    }
     
 }

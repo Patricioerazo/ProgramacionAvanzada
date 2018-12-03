@@ -10,10 +10,7 @@ package mx.com.gm.peliculas.domain;
  * @author Windows 10
  */
 public class Pelicula {
-    private String nombre;
-
-    public Pelicula() {
-    }
+    String nombre;
 
     public Pelicula(String nombre) {
         this.nombre = nombre;
@@ -29,7 +26,7 @@ public class Pelicula {
 
     @Override
     public String toString() {
-        return "Pelicula{" + "nombre=" + nombre + '}';
+        return this.nombre;
     }
     
 }
