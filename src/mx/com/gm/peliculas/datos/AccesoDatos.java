@@ -7,17 +7,17 @@ package mx.com.gm.peliculas.datos;
 
 import java.util.List;
 import mx.com.gm.peliculas.domain.Pelicula;
+import mx.com.gm.peliculas.excepciones.AccesoDatosEx;
+import mx.com.gm.peliculas.excepciones.EscrituraDatosEx;
+import mx.com.gm.peliculas.excepciones.LecturaDatosEx;
 
-/**
- *
- * @author Windows 10
- */
+
 public interface AccesoDatos {
-    public abstract boolean existe(String nombreArchivo);
-    public abstract List<Pelicula> listar (String nombre);
-    public abstract void escribir (Pelicula pelicula, String nombreArchivo, boolean anexar);
-    public abstract String buscar (String nombreArchivo, String buscar);
-    public abstract void crear (String nombreArchivo);
-    public abstract void borra (String nombreArchivo);
+    boolean existe(String nombreArchivo)throws AccesoDatosEx;
+    public List<Pelicula> listar (String nombreArchivo)throws LecturaDatosEx;
+    void escribir (Pelicula pelicula, String nombreArchivo, boolean anexar) throws EscrituraDatosEx;
+    public String buscar (String nombreArchivo, String buscar)throws LecturaDatosEx;
+    public void crear (String nombreArchivo) throws EscrituraDatosEx;
+    public void borrar (String nombreArchivo)throws AccesoDatosEx;
     
 }
